@@ -5,10 +5,14 @@ public class Radio {
     private int currentVolume;
     private int maxStation;
     private int minStation;
+    private int maxVolume;
+    private int minVolume;
 
     public Radio() {
         maxStation = 9;
         minStation = 0;
+        maxVolume = 100;
+        minVolume = 0;
     }
 
     public void next() {
@@ -53,6 +57,22 @@ public class Radio {
             return;
         }
         this.currentVolume = currentVolume;
+    }
+
+    public void nextVolume() {
+        if (currentVolume != maxVolume) {
+            currentVolume++;
+        } else {
+            currentVolume = 100;
+        }
+    }
+
+    public void prevVolume() {
+        if (currentVolume != minVolume) {
+            currentVolume--;
+        } else {
+            currentVolume = 0;
+        }
     }
 
 
