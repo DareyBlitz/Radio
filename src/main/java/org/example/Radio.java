@@ -1,77 +1,97 @@
 package org.example;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
-    private int maxStation;
-    private int minStation;
-    private int maxVolume;
-    private int minVolume;
+    private int number = 10;
+    private int volume;
+    private int maxNumber = 9;
+    private int minNumber = 0;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+
+
+    public Radio(int number) {
+        this.number = number;
+        this.maxNumber = number - 1;
+    }
 
     public Radio() {
-        maxStation = 9;
-        minStation = 0;
-        maxVolume = 100;
-        minVolume = 0;
+
     }
 
-    public void next() {
-       if (currentStation != maxStation) {
-           currentStation++;
-       } else {
-           currentStation = 0;
-       }
+    public int getNumber() {
+        return number;
     }
 
-    public void prev() {
-        if (currentStation != minStation) {
-            currentStation--;
+    public int getMaxNumber() {
+        return maxNumber;
+    }
+
+    public int getMinNumber() {
+        return minNumber;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public void setNumber(int newNumber) {
+        if (newNumber < minNumber) {
+            return;
+        }
+        if (newNumber > maxNumber) {
+            return;
         } else {
-            currentStation = 9;
+            number = newNumber;
         }
     }
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
+    public void setVolume(int newVolume) {
+        if (newVolume < minVolume) {
             return;
         }
-        if (currentStation > 9) {
+        if (newVolume > maxVolume) {
             return;
         }
-        this.currentStation = currentStation;
+        this.volume = newVolume;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
-            return;
-        }
-        if (currentVolume > 100) {
-            return;
-        }
-        this.currentVolume = currentVolume;
-    }
-
-    public void nextVolume() {
-        if (currentVolume != maxVolume) {
-            currentVolume++;
+    public void nextNumberRadio() {
+        if (number < maxNumber) {
+            number = number + 1;
         } else {
-            currentVolume = 100;
+            number = minNumber;
         }
     }
 
-    public void prevVolume() {
-        if (currentVolume != minVolume) {
-            currentVolume--;
+    public void prevNumberRadio() {
+        if (number > minNumber) {
+            number = number - 1;
         } else {
-            currentVolume = 0;
+            number = maxNumber;
+        }
+    }
+
+    public void increaseVolume() {
+        if (volume < maxVolume) {
+            volume = volume + 1;
+        } else {
+            volume = maxVolume;
+        }
+    }
+
+    public void decreaseVolume() {
+        if (volume > minVolume) {
+            volume = volume - 1;
+        } else {
+            volume = minVolume;
         }
     }
 
